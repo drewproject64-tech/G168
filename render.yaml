@@ -1,0 +1,15 @@
+services:
+  - type: worker
+    name: g168-sport-bot
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app.py
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: DATABASE_PATH
+        value: /var/data/g168_sport.db
+    disk:
+      name: g168-sport-data
+      mountPath: /var/data
+      sizeGB: 1
